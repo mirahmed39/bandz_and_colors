@@ -1,0 +1,16 @@
+.home-header {
+    text-align: center;
+    color: purple;
+}
+.band-list-header {
+    text-align: center;
+}
+#band-list-container {
+    list-style: none;
+    text-align: center;
+}
+
+.general-form-style {
+    text-align: center;
+}
+

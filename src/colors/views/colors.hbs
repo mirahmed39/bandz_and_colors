@@ -1,0 +1,19 @@
+<form method="GET" action="">
+    <label for="red">RED:</label>
+    <input type="number" id="red" name="red">
+    <label for="green">GREEN:</label>
+    <input type="number" id="green" name="green">
+    <label for="blue">BLUE:</label>
+    <input type="number" id="blue" name="blue">
+    <label for="total">HOW MANY?:</label>
+    <input type="number" id="total" name="total">
+    <input type="submit" value="Generate Color Pallete">
+</form>
+
+<ul>
+{{#each colors as |color|}}
+    <div style="background-color:{{color.hex}}; height: 100px; width:100px; margin-bottom: 5px; color: white;">
+        {{color.red}} | {{color.green}} | {{color.blue}} | {{color.name}}</div>
+{{/each}}
+</ul>
+{{errorMessage}}

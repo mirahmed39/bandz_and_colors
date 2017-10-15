@@ -20,9 +20,8 @@
 
 <ul class="colors-container">
 {{#each colors as |color|}}
-    <div class="badge" style="background-color:{{color.hex}}; height: 70px; width: 160px; margin-bottom: 5px; color: white;">
-        <p class="lead">Rgb({{color.red}}, {{color.green}}, {{color.blue}})</p>
-        <p class="lead">{{color.name}}</p>
+    <div class="badge badge-pill" style="background-color:{{color.hex}}; height: 50px; margin-bottom: 5px; color: white;">
+        <p class="lead">{{color.name}} {{color.hex}} Rgb({{color.red}}, {{color.green}}, {{color.blue}})</p>
     </div>
 {{/each}}
 </ul>

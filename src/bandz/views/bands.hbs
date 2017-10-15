@@ -1,38 +1,58 @@
 <hr>
-<form class="general-form-style" method="GET" action="">
-    <input type="radio" name="filterGenre" value="ock"> Rock
-    <input type="radio" name="filterGenre" value="pop"> Pop
-    <input type="radio" name="filterGenre" value="hip-hop"> Hip-Hop
-    <input type="radio" name="filterGenre" value="electronic"> Electronic
-    <input type="radio" name="filterGenre" value="metal"> Metal
-    <input type="radio" name="filterGenre" value="jazz"> Jazz
-    <input type="submit" value="filter by genre">
-</form>
+<div class="form-group">
+    <form class="general-form-style" method="GET" action="">
+        <input type="radio" name="filterGenre" value="rock"> Rock
+        <input type="radio" name="filterGenre" value="pop"> Pop
+        <input type="radio" name="filterGenre" value="hip-hop"> Hip-Hop
+        <input type="radio" name="filterGenre" value="electronic"> Electronic
+        <input type="radio" name="filterGenre" value="metal"> Metal
+        <input type="radio" name="filterGenre" value="jazz"> Jazz
+        <input type="submit" class="btn btn-danger" value="Filter by Genre">
+    </form>
+</div>
 <hr>
-<h2 class="band-list-header">Recommended Bandz</h2>
-<ul id="band-list-container">
-{{#each filteredGenres as |band|}}
-    <li>{{band.name}} ({{band.genre}}) - {{band.description}} | {{band.location}}</li> <br>
-{{/each}}
-</ul>
-<hr>
-<h2 class="band-list-header">Add a Band Recommendation</h2>
-<form class="general-form-style" method="POST" action="">
-    <label for="band-name">Band Name:</label>
-    <input type="text" id="band-name" name="name"> <br>
-    <label for="band-location">Band Location:</label>
-    <input type="text" id="band-location" name="location"> <br>
-    <label for="band-desc">Description:</label>
-    <input type="text" id="band-desc" name="description"> <br>
+<div class="jumbotron">
+    <h2 class="band-list-header">Recommended Bandz</h2>
+    <ul id="band-list-container">
+    {{#each filteredGenres as |band|}}
+        <li>{{band.name}} ({{band.genre}}) - {{band.description}} | {{band.location}}</li> <br>
+    {{/each}}
+    </ul>
+</div>
 
-    <input type="radio" name="genre" value="rock"> Rock
-    <input type="radio" name="genre" value="pop"> Pop <br>
-    <input type="radio" name="genre" value="hip-hop"> Hip-Hop
-    <input type="radio" name="genre" value="electronic"> Electronic <br>
-    <input type="radio" name="genre" value="metal"> Metal
-    <input type="radio" name="genre" value="jazz"> Jazz
-    <input type="submit" value="Submit">
-</form>
-<hr>
+<div class="jumbotron">
+    <h2 class="band-list-header">Add a Band Recommendation</h2>
+    <form class="general-form-style form-group" method="POST" action="">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <label for="band-name">Band Name:</label>
+                <input type="text" class="form-control" id="band-name" name="name">
+                <label for="band-location">Band Location:</label>
+                <input type="text" class="form-control" id="band-location" name="location">
+                <label for="band-desc">Description:</label>
+                <input type="text" class="form-control" id="band-desc" name="description">
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <input type="radio" name="genre" value="rock"> Rock
+                <input type="radio" name="genre" value="pop"> Pop <br>
+                <input type="radio" name="genre" value="hip-hop"> Hip-Hop
+                <input type="radio" name="genre" value="electronic"> Electronic <br>
+                <input type="radio" name="genre" value="metal"> Metal
+                <input type="radio" name="genre" value="jazz"> Jazz
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <input type="submit" class="btn btn-lg btn-outline-danger" value="Add Band">
+            </div>
+        </div>
+    </form>
+</div>
 
 

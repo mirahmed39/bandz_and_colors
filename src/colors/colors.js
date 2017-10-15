@@ -13,9 +13,6 @@ colors.forEach(function(ele) {
     const nameAndHex = ele.split(',');
     colorMap[nameAndHex[1]] = nameAndHex[0];
 });
-
-console.log(colorMap.hasOwnProperty('#008080'));
-
 // express functionalities
 const publicPath = path.resolve(__dirname, 'public');
 app.set('view engine', 'hbs');
@@ -26,16 +23,24 @@ app.get('/', function (req, res) {
 });
 
 app.get('/colors', function (req, res) {
-    const error = false;
     const red = req.query.red;
     const green = req.query.green;
     const blue = req.query.blue;
     const total = req.query.total;
-    if ((red>=0 && red<=255)&&(green>=0 && green<=255)&&(blue>=0 && blue<=255)&&(total>=2&&total<=100)) {
+    /*
+    this first checks if the query string is empty, if so
+    then displays the form with no content object passed
+    If query string exists, checks if the inputs are valid,
+    if they are, then passes the color to render. Lastly,
+    if error exits in the input, it only passes the error message
+    to display.
+     */
+    if (Object.keys(req.query).length === 0) {
+        res.render('colors', {});
+    }
+    else if ((red>=0 && red<=255)&&(green>=0 && green<=255)&&(blue>=0 && blue<=255)&&(total>=2&&total<=10)) {
         const color = new Color(red, green, blue);
         const colorPallete = color.generateRandomHexes(total);
-        console.log("this is the color pallete:");
-        console.log(colorPallete);
         let colors= [];
         colorPallete.forEach(function (ele) {
             if(colorMap.hasOwnProperty(ele[3])) {
@@ -43,13 +48,13 @@ app.get('/colors', function (req, res) {
                 const obj = {red: ele[0], green: ele[1], blue: ele[2], hex: ele[3], name: match};
                 colors.push(obj);
             } else {
-                const obj = {red: ele[0], green: ele[1], blue: ele[2], hex: ele[3], name: "No name"};
+                const obj = {red: ele[0], green: ele[1], blue: ele[2], hex: ele[3], name: " "};
                 colors.push(obj);
             }
         });
         res.render('colors', {colors: colors});
     } else {
-        const errorMessage = "Hey Red, Green and Blue should be from 0 though 255, and 'How Many' should be " +
+        const errorMessage = "Hey! Red, Green and Blue should be from 0 through 255, and 'How Many' should be " +
             "between 2 and 10";
         res.render('colors', {errorMessage:errorMessage});
     }

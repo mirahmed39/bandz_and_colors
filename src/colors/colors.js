@@ -31,7 +31,7 @@ app.get('/colors', function (req, res) {
     const green = req.query.green;
     const blue = req.query.blue;
     const total = req.query.total;
-    if ((red>=0 && red<=255)&&(green>=0 && green<=255)&&(blue>=0 && blue<=255)&&(total>=2&&total<=1000)) {
+    if ((red>=0 && red<=255)&&(green>=0 && green<=255)&&(blue>=0 && blue<=255)&&(total>=2&&total<=100)) {
         const color = new Color(red, green, blue);
         const colorPallete = color.generateRandomHexes(total);
         console.log("this is the color pallete:");
@@ -43,13 +43,13 @@ app.get('/colors', function (req, res) {
                 const obj = {red: ele[0], green: ele[1], blue: ele[2], hex: ele[3], name: match};
                 colors.push(obj);
             } else {
-                const obj = {red: ele[0], green: ele[1], blue: ele[2], hex: ele[3], name: "no name"};
+                const obj = {red: ele[0], green: ele[1], blue: ele[2], hex: ele[3], name: "No name"};
                 colors.push(obj);
             }
         });
         res.render('colors', {colors: colors});
     } else {
-        const errorMessage = "Hey Red, Green and Blue should be from 0 though 255, and 'How Many' should be" +
+        const errorMessage = "Hey Red, Green and Blue should be from 0 though 255, and 'How Many' should be " +
             "between 2 and 10";
         res.render('colors', {errorMessage:errorMessage});
     }

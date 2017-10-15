@@ -1,19 +1,32 @@
-<form method="GET" action="">
-    <label for="red">RED:</label>
-    <input type="number" id="red" name="red">
-    <label for="green">GREEN:</label>
-    <input type="number" id="green" name="green">
-    <label for="blue">BLUE:</label>
-    <input type="number" id="blue" name="blue">
-    <label for="total">HOW MANY?:</label>
-    <input type="number" id="total" name="total">
-    <input type="submit" value="Generate Color Pallete">
-</form>
+<div class="form-group form-container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form method="GET" action="">
+                <label for="red">RED:</label>
+                <input type="number" class="input-box form-control" id="red" name="red">
+                <label for="green">GREEN:</label>
+                <input type="number" class="input-box form-control" id="green" name="green">
+                <label for="blue">BLUE:</label>
+                <input type="number" class="input-box form-control" id="blue" name="blue">
+                <label for="total">HOW MANY?:</label>
+                <input type="number" class=" input-box form-control" id="total" name="total"> <br>
+                <input type="submit" class="btn btn-warning input-box form-control" value="Generate Color Pallete">
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
 
-<ul>
+<ul class="colors-container">
 {{#each colors as |color|}}
-    <div style="background-color:{{color.hex}}; height: 100px; width:100px; margin-bottom: 5px; color: white;">
-        {{color.red}} | {{color.green}} | {{color.blue}} | {{color.name}}</div>
+    <div class="badge" style="background-color:{{color.hex}}; height: 70px; width: 160px; margin-bottom: 5px; color: white;">
+        <p class="lead">Rgb({{color.red}}, {{color.green}}, {{color.blue}})</p>
+        <p class="lead">{{color.name}}</p>
+    </div>
 {{/each}}
 </ul>
-{{errorMessage}}
+
+{{#if errorMessage}}
+<div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+{{/if}}

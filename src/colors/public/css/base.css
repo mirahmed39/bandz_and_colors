@@ -2,10 +2,35 @@
     text-align: center;
 }
 
-nav {
+.nav-item > a {
+    font-size: 1.5em;
+}
+
+.form-container {
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+.input-box {
+    text-align: center;
+    width: 20em;
+}
+
+.colors-container {
     text-align: center;
 }
 
-ul div{
-    float: left;
+.badge {
+    position: relative;
+    border: 1px solid black;
+}
+
+.badge > p {
+    top:50%;
+}
+
+.alert-danger {
+    text-align: center;
+    margin-left: 10em;
+    margin-right: 10em;
 }

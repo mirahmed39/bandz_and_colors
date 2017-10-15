@@ -8,9 +8,9 @@ class Color {
     generateRandomHexes(n) {
         let hexArray = [[this.red, this.green, this.blue, generateHexCode(this.red, this.green, this.blue)]];
         for(let i = 0; i < n-1; i++) {
-            const randomRed = Math.floor(Math.random()*256);
-            const randomGreen = Math.floor(Math.random()*256);
-            const randomBlue = Math.floor(Math.random()*256);
+            const randomRed = Math.abs(Math.floor(Math.random()*256) - this.red);
+            const randomGreen = Math.abs(Math.floor(Math.random()*256) - this.green);
+            const randomBlue = Math.abs(Math.floor(Math.random()*256) - this.blue);
             hexArray.push([randomRed, randomGreen, randomBlue, generateHexCode(randomRed, randomGreen, randomBlue)]);
         }
         return hexArray;
